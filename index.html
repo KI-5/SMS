@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Students form</title>
+</head>
+
+<body>
+    <h1>Student Management System</h1>
+    <hr style="width: 100%;">
+    <div class="container">
+
+        <!-- Right container -->
+        <div class="right-container">
+
+            <!-- Form -->
+            <form onsubmit="formSubmit(event)">
+
+                <!-- Personal input -->
+                <h2 class="h2-class">Personal details</h2>
+                <!-- <label class="error-class hide" id="fnameError">Required*</label> -->
+                 <!-- first name -->
+                <label for="fname">Enter first name:* </label><br>
+                <input type="text" name="fname" id="fname"><br>
+                <div class="error-class hide" id="fnameError"></div>
+
+                <!-- last name -->
+                <label for="lname">Enter last name:*</label><br>
+                <input type="text" name="lname" id="lname"><br>
+                <div class="error-class hide" id="lnameError"></div>
+
+                <!-- email -->
+                <label for="email">Enter email:*</label><br>
+                <input type="text" name="email" id="email"><br>
+                <div class="error-class hide" id="mailError"></div>
+
+                <!-- age -->
+                <label for="age">Enter age:</label><br>
+                <input type="number" name="age" id="age"><br>
+                <div class="error-class hide" id="ageError"></div>
+                
+
+                <!-- gender -->
+                 <label for="gender">Gender:</label><br>
+                <select name="gender" id="gender">
+                    <option value="F">Female</option>
+                    <option value="M">Male</option>
+                    <option value="Other">Other</option>
+                </select>
+                
+
+                <!-- contactNo -->
+                <label for="contactNo">Enter contactNo:</label><br>
+                <input type="text" name="contactNo" id="contactNo"><br>
+                <div class="error-class hide" id="contactNoError"></div>
+
+                <div><hr style="width: 100%;"></div>
+                <br>
+
+                <!-- Education input -->
+                <h2 class="h2-class">Education details</h2>
+                <!-- course type selection -->
+                <label for="courseType">Course type:</label><br>
+                <select name="courseType" id="courseType">
+                    <option value="bach">Bachelors</option>
+                    <option value="cert">Certificate</option>
+                    <option value="dip">Diploma</option>
+                    <option value="advDip">Advanced Diploma</option> 
+                    <option value="mas">Masters</option>  
+                    <option value="phd">PhD</option>  
+                </select><br>
+                
+                <!-- course name -->
+                <label for="courseName">Course name:</label><br>
+                <input type="type" name="courseName" id="courseName"><br>
+
+                <!-- grade input -->
+                <label for="grade">Course Result: </label><br>
+                <select name="grade" id="grade">
+                    <option value="Honours">Honours</option>
+                    <option value="Merit">Merit</option>
+                    <option value="Distinction">Distinction</option>
+                    <option value="Pass">Pass</option> 
+                    <option value="B-Fail">Fail</option>  
+                </select><br>
+
+                <!-- startin date -->
+                <label for="startDate">Start Date:</label><br>
+                <input type="date" id="startDate" name="startDate"><br>
+
+                <!-- ending date -->
+                <label for="endDate">End Date:</label><br>
+                <input type="date" id="endDate" name="endDate"><br>
+
+                <!-- Modules input -->
+                <h3 class="h3-class margin-0">Module details</h2>
+                <div class="module-content margin-0" id="modal-container">
+                    <!-- module array -->
+                    <div id="modules-list" class="margin-0"></div>
+                    <!-- add more -->
+                    <button type="button" id="addModuleBtn" style="padding:0;color: black;">Add Module
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+
+                <!-- module container -->
+                <template id="module-template" class="margin-0">
+                    <div class="module-mid-div margin-0">
+                        <div class="module-top-div margin-0">
+                            <div class="margin-0">
+                                <!-- module name and code -->
+                                <label for="moduleSelect">Module:</label><br>
+                                <select name="moduleSelect" class="moduleSelect" style="width: 70%;">
+                                    <option value="MATH101">Mathematics (MATH101)</option>
+                                    <option value="CS102">Computer Science (CS102)</option>
+                                    <option value="ENG103">English Literature (ENG103)</option>
+                                    <option value="PHY105">Physics (PHY105)</option>
+                                    <option value="CHEM106">Chemistry (CHEM106)</option>
+                                    <option value="OOP107">Object-oriented programming (OOP107)</option>
+                                    <option value="CYB108">Cyber Security (CYB108)</option>
+                                </select><br>
+                            </div>
+                            <div class="margin-0">
+                                <!-- module credits -->
+                                <label for="moduleCredits">Credits:</label><br>
+                                <input type="number" name="moduleCredits" class="moduleCredits" step="20" max="120" min="0" style="width:100px;"><br>
+                                <div class="error-class hide" id="moduleCreditsError"></div>
+                            </div>
+                        </div>
+                        <div class="module-top-div margin-0">
+                            <div class="margin-0">
+                                <!-- instructor -->
+                                <label for="moduleInstructor">Instructor:</label><br>
+                                <input type="text" name="moduleInstructor" class="moduleInstructor" style="width: 70%;"><br>
+                                <div class="error-class hide" id="moduleInstructorError"></div>
+                            </div>
+                            <div class="margin-0">
+                                <!-- module grade -->
+                                <label for="moduleGrade">Result:</label><br>
+                                <input type="number" max="100" min="0" name="moduleGrade" class="moduleGrade" style="width:100px;"><br>
+                                <div class="error-class hide" id="moduleGradeError"></div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                <!-- Button to add user -->
+                <label ></label>
+                <input type="submit" value="Add User">
+            </form>
+        </div>
+
+        <!-- Left container -->
+        <div class="left-container">
+
+            <!-- Table for list -->
+            <table class="list" id="studentList">
+                <!-- Header section -->
+                <thead>
+                    <tr>
+                        <th> Name</th>
+                        <th>Email</th>
+                        <th>Age</th>
+                        <th>Course</th>
+                        <th>Grade</th>
+                        <th>Action</th>
+                    </tr>
+                    
+                </thead>
+
+                <!-- Body section -->
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <div id="edit"class="hide popup">
+        <div class="modal-content">
+            <input type="hidden" id="editId">
+            <h2 class="h2-class">Edit details</h2>
+            <form id="editForm">
+                <!-- first name -->
+                <label for="editFname">First name:* </label><br>
+                <input type="text" name="editFname" id="editFname"><br>
+                <div class="error-class hide" id="fnameError"></div>
+
+                <!-- lasst name -->
+                <label for="editLname">Last name:*</label><br>
+                <input type="text" name="lnaeditLnameme" id="editLname"><br>
+                <div class="error-class hide" id="lnameError"></div>
+
+                <!-- email -->
+                <label for="editEmail">Email:*</label><br>
+                <input type="text" name="editEmail" id="editEmail"><br>
+                <div class="error-class hide" id="mailError"></div>
+
+                <!-- age -->
+                <label for="editAge">Age:</label><br>
+                <input type="number" name="editAge" id="editAge"><br>
+                <div class="error-class hide" id="ageError"></div>
+                <br><br>
+
+                <!-- course type -->
+                <label for="editCourseType">Course type:</label><br>
+                <select name="editCourseType" id="editCourseType">
+                    <option value="bach">Bachelors</option>
+                    <option value="cert">Certificate</option>
+                    <option value="dip">Diploma</option>
+                    <option value="advDip">Advanced Diploma</option> 
+                    <option value="mas">Masters</option>  
+                    <option value="phd">PhD</option>  
+                </select><br>
+                
+                <!-- course name -->
+                <label for="editcourseName">Educational type:</label><br>
+                <input type="type" name="editcourseName" id="editcourseName"><br>
+
+                <!-- grade input -->
+                <label for="editGrade">Grade: </label><br>
+                <select name="editGrade" id="editGrade">
+                    <option value="Honours">Honours</option>
+                    <option value="Merit">Merit</option>
+                    <option value="Distinction">Distinction</option>
+                    <option value="Pass">Pass</option> 
+                    <option value="Fail">Fail</option>   
+                </select><br>
+            </form>
+
+            <!-- Modules -->
+            
+            <h3 class="h3-class margin-0">Module details</h2>
+                <div class="module-content margin-0" id="modal-container">
+                    <!-- module array -->
+                    <div id="editModulesContainer" class="margin-0"></div>
+                    <!-- add more -->
+                    <button type="button" id="addModuleBtn" style="padding:0;color: black;">Add Module
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+            
+            <div class="btn-div"></div>
+                <!-- <label for="close-btn"></label> -->
+                <input type="button" onclick="closePopup()" value="Close">
+            
+                <!-- <label for="save-btn"></label> -->
+                <input type="submit" form="editForm" value="Save">
+            </div>
+            
+        </div>
+    </div>
+</body>
+<script src="db_script.js"></script>
+</html>

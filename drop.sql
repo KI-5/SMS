@@ -1,0 +1,6 @@
+-- use sms;
+-- drop table student;
+-- drop table qualification;
+-- drop table grade;
+-- drop database sms;
+-- create database sms;
